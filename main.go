@@ -11,10 +11,13 @@ import (
 const AppName = "guide2go"
 
 // Version : Version
-const Version = "1.1.3"
+const Version = "1.2.0-kegbeach"
 
 // Config : Config file (struct)
 var Config config
+
+// kegbeach: compression detection logic
+var iscomp bool
 
 func main() {
 
