@@ -185,6 +185,21 @@ func (sd *SD) Connect() (err error) {
     ShowErr(err)
     return
   }
+  
+  // kegbeach: compression detection logic
+  if !resp.Uncompressed {
+      iscomp = true
+  } else {
+      iscomp = false
+  }
+//  switch resp.Header.Get("Content-Encoding") {
+//  case "gzip":
+//    iscomp = true
+//  default:
+//    iscomp = false
+//  }
+  // kegbeach: end compression detection logic
+  
   defer resp.Body.Close()
 
   body, err := ioutil.ReadAll(resp.Body)
