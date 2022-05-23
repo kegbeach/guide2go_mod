@@ -120,24 +120,33 @@ func (c *cache) AddSchedule(data *[]byte) {
 }
 
 func (c *cache) AddProgram(gzip *[]byte, wg *sync.WaitGroup) {
-
+  var bb []byte // kegbeach: compression detection logic
+  
   c.Lock()
-
   defer func() {
     c.Unlock()
     wg.Done()
   }()
 
-  b, err := gUnzip(*gzip)
-  if err != nil {
-    ShowErr(err)
-    return
+  // kegbeach: compression detection logic
+  if iscomp == true {
+      showInfo("INFO", fmt.Sprintf("Server returned compressed data: decompressing"))
+      b, err := gUnzip(*gzip)
+      if err != nil {
+          ShowErr(err)
+          return
+      }
+      bb = b
+  } else {
+      showInfo("INFO", fmt.Sprintf("Server returned uncompressed data: continuing"))
+      bb = *gzip
   }
+  // kegbeach: end compression detection logic
 
   var g2gCache G2GCache
   var sdData []SDProgram
 
-  err = json.Unmarshal(b, &sdData)
+  err := json.Unmarshal(bb, &sdData)
   if err != nil {
     ShowErr(err)
     return
@@ -169,24 +178,34 @@ func (c *cache) AddProgram(gzip *[]byte, wg *sync.WaitGroup) {
 }
 
 func (c *cache) AddMetadata(gzip *[]byte, wg *sync.WaitGroup) {
-
+  var bb []byte // kegbeach: compression detection logic
+  
   c.Lock()
   defer func() {
     c.Unlock()
     wg.Done()
   }()
 
-  b, err := gUnzip(*gzip)
-  if err != nil {
-    ShowErr(err)
-    return
+  // kegbeach: compression detection logic
+  if iscomp == true {
+      showInfo("INFO", fmt.Sprintf("Server returned compressed data: decompressing"))
+      b, err := gUnzip(*gzip)
+      if err != nil {
+          ShowErr(err)
+          return
+      }
+      bb = b
+  } else {
+      showInfo("INFO", fmt.Sprintf("Server returned uncompressed data: continuing"))
+      bb = *gzip
   }
+  // kegbeach: end compression detection logic
 
   var tmp = make([]interface{}, 0)
 
   var g2gCache G2GCache
 
-  err = json.Unmarshal(b, &tmp)
+  err := json.Unmarshal(bb, &tmp)
   if err != nil {
     ShowErr(err)
     return
