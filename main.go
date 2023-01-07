@@ -51,7 +51,9 @@ func main() {
 		if Config.Options.RunServer || Config.Options.ProxyImages {
 			Server()
 			os.Exit(0)
-		}
+		} else {
+	                showInfo("INFO", fmt.Sprintf("HTTP server not activated"))
+                }
 
 	}
 }
