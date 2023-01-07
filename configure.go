@@ -192,6 +192,12 @@ func (c *config) Open() (err error) {
 		Config.Options.ProxyImages = false
 	}
 
+	// Run guide2go HTTP server
+	if !bytes.Contains(data, []byte("guide2go HTTP server")) {
+		newOptions = true
+		Config.Options.RunServer = false
+	}
+	
 	// Hostname
 	if !bytes.Contains(data, []byte("Hostname")) {
 		newOptions = true
