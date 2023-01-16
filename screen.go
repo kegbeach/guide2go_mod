@@ -164,3 +164,23 @@ func showInfo(key, msg string) {
 
   log.Println(msg)
 }
+
+func showInfoReturn(key, msg string) {
+  log.SetOutput(os.Stdout)
+  switch len(key) {
+
+  case 1:
+    msg = fmt.Sprintf("[%s    ] %s", key, msg)
+  case 2:
+    msg = fmt.Sprintf("[%s   ] %s", key, msg)
+  case 3:
+    msg = fmt.Sprintf("[%s  ] %s", key, msg)
+  case 4:
+    msg = fmt.Sprintf("[%s ] %s", key, msg)
+  case 5:
+    msg = fmt.Sprintf("[%s] %s", key, msg)
+
+  }
+
+  log.Println(\rmsg)
+}
