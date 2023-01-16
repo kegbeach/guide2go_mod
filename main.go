@@ -52,7 +52,7 @@ func main() {
 			Server()
 			os.Exit(0)
 		} else {
-	                showInfo("INFO", fmt.Sprintf("HTTP server not activated"))
+	                showInfo("WARN", fmt.Sprintf("Internal HTTP server disabled"))
                 }
 
 	}
