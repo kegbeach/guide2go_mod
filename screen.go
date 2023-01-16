@@ -166,6 +166,9 @@ func showInfo(key, msg string) {
 }
 
 func showInfoReturn(key, msg string) {
+  var msgr
+
+  log.SetOutput(os.Stdout)
   switch len(key) {
 
   case 1:
