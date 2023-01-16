@@ -15,6 +15,7 @@ import (
 // Cache : Cache file
 var Cache cache
 var ImageError bool = false
+var ImageCount = 1
 
 // Init : Inti cache
 func (c *cache) Init() {
@@ -653,6 +654,8 @@ func (c *cache) GetIcon(id string) (i []Icon) {
 
 			if maxWidth > 0 {
 				if Config.Options.TVShowImages && !ImageError {
+					fmt.Printf("\rDownloading Image: %d", ImageCount)
+					ImageCount++
 					GetImageUrl(uri, Token, nameFinal)
 				}
 				path := "http://" + Config.Options.Hostname + "/images/" + nameFinal
