@@ -166,7 +166,6 @@ func showInfo(key, msg string) {
 }
 
 func showInfoReturn(key, msg string) {
-  log.SetOutput(os.Stdout)
   switch len(key) {
 
   case 1:
@@ -182,5 +181,5 @@ func showInfoReturn(key, msg string) {
 
   }
 
-  log.Println("\r", msg)
+  fmt.Printf("\r%s", msg)
 }
