@@ -181,5 +181,6 @@ func showInfoReturn(key, msg string) {
 
   }
 
-  fmt.Printf("\r%s", msg)
+  msgr = log.Println(msg)
+  fmt.Printf("\r%s", msgr)
 }
