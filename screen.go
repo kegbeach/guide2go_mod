@@ -7,6 +7,7 @@ import (
 	"os"
 	"sort"
 	"strconv"
+	"time"
 )
 
 func getMsg(code int) (msg string) {
@@ -166,7 +167,6 @@ func showInfo(key, msg string) {
 }
 
 func showInfoReturn(key, msg string) {
-  log.SetOutput(os.Stdout)
   switch len(key) {
 
   case 1:
@@ -182,5 +182,8 @@ func showInfoReturn(key, msg string) {
 
   }
 
-  log.Print(msg)
+  var timedata string
+	
+  timedata = current_time.Format("2006/01/02 15:04:05"))
+  fmt.Printf("\r%s %s" timedata, msg)
 }
