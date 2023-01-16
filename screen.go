@@ -184,6 +184,7 @@ func showInfoReturn(key, msg string) {
 
   var timedata string
 	
+  current_time := time.Now()
   timedata = current_time.Format("2006/01/02 15:04:05")
   fmt.Printf("\r%s %s", timedata, msg)
 }
