@@ -186,14 +186,9 @@ func (c *config) Open() (err error) {
 		showInfo("G2G", fmt.Sprintf("%s (TVShows images Path) [%s]", getMsg(403), Config.File))
 
 	}
-	// Proxy scheduledirect images url
-	if !bytes.Contains(data, []byte("Proxy Images")) {
-		newOptions = true
-		Config.Options.ProxyImages = false
-	}
-
+	
 	// Run guide2go HTTP server
-	if !bytes.Contains(data, []byte("guide2go HTTP server")) {
+	if !bytes.Contains(data, []byte("Internal HTTP server")) {
 		newOptions = true
 		Config.Options.RunServer = false
 	}
@@ -204,6 +199,12 @@ func (c *config) Open() (err error) {
 		Config.Options.Hostname = "localhost:8080"
 	}
 
+	// Proxy scheduledirect images url
+	if !bytes.Contains(data, []byte("Proxy Images")) {
+		newOptions = true
+		Config.Options.ProxyImages = false
+	}
+	
 	// SD errors
 	if !bytes.Contains(data, []byte("download errors")) {
 
@@ -253,11 +254,13 @@ func (c *config) InitConfig() {
 
 	// Options
 	c.Options.PosterAspect = "all"
-	c.Options.TVShowImages = false
 	c.Options.Schedule = 7
 	c.Options.SubtitleIntoDescription = false
 	c.Options.Credits = false
+	c.Options.TVShowImages = false
 	c.Options.ImagesPath = "/data/images/"
+	c.Options.RunServer = false
+	c.Options.Hostname = "localhost:8080"
 	c.Options.ProxyImages = false
 	Config.Options.Rating.Guidelines = true
 	Config.Options.Rating.Countries = []string{"USA", "CHE", "DE"}
