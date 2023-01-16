@@ -170,17 +170,17 @@ func showInfoReturn(key, msg string) {
   switch len(key) {
 
   case 1:
-    msg = fmt.Sprintf("\r[%s    ] %s", key, msg)
+    msg = fmt.Sprintf("[%s    ] %s", key, msg)
   case 2:
-    msg = fmt.Sprintf("\r[%s   ] %s", key, msg)
+    msg = fmt.Sprintf("[%s   ] %s", key, msg)
   case 3:
-    msg = fmt.Sprintf("\r[%s  ] %s", key, msg)
+    msg = fmt.Sprintf("[%s  ] %s", key, msg)
   case 4:
-    msg = fmt.Sprintf("\r[%s ] %s", key, msg)
+    msg = fmt.Sprintf("[%s ] %s", key, msg)
   case 5:
-    msg = fmt.Sprintf("\r[%s] %s", key, msg)
+    msg = fmt.Sprintf("[%s] %s", key, msg)
 
   }
 
-  log.Println(msg)
+  log.Println("\r", msg)
 }
