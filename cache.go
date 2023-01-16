@@ -317,6 +317,7 @@ func (c *cache) Save() (err error) {
 func (c *cache) CleanUp() {
 
 	var count int
+	fmt.Printf("\n")
 	showInfo("G2G", fmt.Sprintf("Clean up Cache [%s]", Config.Files.Cache))
 
 	var programIDs = c.GetAllProgramIDs()
