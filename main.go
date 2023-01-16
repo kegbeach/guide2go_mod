@@ -48,7 +48,7 @@ func main() {
 		if err != nil {
 			ShowErr(err)
 		}
-		if Config.Options.RunServer || Config.Options.ProxyImages {
+		if Config.Options.RunServer {
 			Server()
 			os.Exit(0)
 		} else {
