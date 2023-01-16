@@ -655,7 +655,7 @@ func (c *cache) GetIcon(id string) (i []Icon) {
 
 			if maxWidth > 0 {
 				if Config.Options.TVShowImages && !ImageError {
-					fmt.Printf("\rDownloading Image: %d", ImageCount)
+					showInfoReturn("G2G", fmt.Sprintf("Downloading Image: %d", ImageCount))
 					ImageCount++
 					GetImageUrl(uri, Token, nameFinal)
 				}
