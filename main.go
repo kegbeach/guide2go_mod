@@ -11,7 +11,7 @@ import (
 const AppName = "guide2go"
 
 // Version : Version
-const Version = "1.2.0-kegbeach"
+const Version = "1.1.99-compdetect_mod"
 
 // Config : Config file (struct)
 var Config config
