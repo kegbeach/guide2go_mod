@@ -11,7 +11,7 @@ import (
 const AppName = "guide2go"
 
 // Version : Version
-const Version = "1.2.1-kegbeach"
+const Version = "1.2.99-imagecache_mod"
 
 // Config : Config file (struct)
 var Config config
